@@ -36,4 +36,5 @@ RUN mkdir -p /var/www/html/storage /var/www/html/config /var/www/html/install \
 EXPOSE 80
 
 # nginx 背景啟動，php-fpm 前台保活容器
-CMD ["sh", "-c", "nginx && exec php-fpm -F"]
+CMD ["sh", "-c", "chown -R www-data:www-data /var/www/html && nginx && exec php-fpm -F"]
+
