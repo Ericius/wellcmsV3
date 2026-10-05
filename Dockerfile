@@ -12,9 +12,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libfreetype6-dev \
         libzip-dev \
         libonig-dev \
+        libicu-dev \
         unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j"$(nproc)" pdo pdo_pgsql pdo_mysql mbstring gd exif fileinfo zip opcache \
+    && docker-php-ext-install -j1 pdo pdo_pgsql pdo_mysql mbstring gd exif fileinfo zip opcache intl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 上傳限制放寬（CMS 上傳附件用）
