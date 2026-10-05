@@ -29,8 +29,8 @@ COPY . /var/www/html
 COPY nginx.conf /etc/nginx/sites-enabled/default
 
 # 可寫目錄：安裝精靈要寫 config/、install/install.lock，上傳寫 storage/
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/config /var/www/html/install \
-    && chmod -R 775 /var/www/html/storage /var/www/html/config /var/www/html/install
+RUN mkdir -p /var/www/html/storage /var/www/html/config /var/www/html/install \
+    && chown -R www-data:www-data /var/www/html/storage /var/www/html/config /var/www/html/install \
     && chmod -R 775 /var/www/html/storage /var/www/html/config /var/www/html/install
 
 EXPOSE 80
